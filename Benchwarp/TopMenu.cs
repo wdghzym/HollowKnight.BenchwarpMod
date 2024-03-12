@@ -115,6 +115,8 @@ namespace Benchwarp
             Rect buttonRect = new(0, 0, GUIController.Instance.images["ButtonRect"].width, GUIController.Instance.images["ButtonRect"].height);
 
             fontSize = 12;
+            if (Language.Language.CurrentLanguage() == Language.LanguageCode.ZH)
+                fontSize = 16;
 
             void AddButton(CanvasPanel panel, string name, UnityAction<string> action, Vector2 pos, string displayName = null, Font f = null)
             {
@@ -199,7 +201,7 @@ namespace Benchwarp
                         position += new Vector2(0f, 23f);
                     }
                 }
-                
+
 
                 CanvasPanel farStyle = MakePanel("Far Style", new Vector2(245f, 420f));
                 {
@@ -212,7 +214,7 @@ namespace Benchwarp
                         position += new Vector2(0f, 23f);
                     }
                 }
-                
+
 
 
                 CanvasPanel options = MakePanel("Options", new Vector2(345f, 420f));
@@ -232,7 +234,7 @@ namespace Benchwarp
                 }
             }
 
-            
+
 
 
 
@@ -295,13 +297,14 @@ namespace Benchwarp
                                             door3,
                                             doors[k],
                                             (doorSelected) => DoorWarpSelection.door = doorSelected,
-                                            GridPosition(k, 2, 100f, 40f, new Vector2(5f, 25f))
+                                            GridPosition(k, 2, 100f, 40f, new Vector2(5f, 25f)),
+                                            displayName: Localize(doors[k])
                                         );
                                     }
                                     if (!door3.active) door3.ToggleActive();
                                 },
                                 GridPosition(j, 6, 100f, 40f, new Vector2(5f, 25f)),
-                                displayName: Events.GetSceneName(rooms[j])
+                                displayName: Localize(Events.GetSceneName(rooms[j]))
                             );
                         }
                     };
@@ -311,7 +314,8 @@ namespace Benchwarp
                         door1,
                         name,
                         action,
-                        GridPosition(i, 7, 100f, 40f, new Vector2(5f, 25f))
+                        GridPosition(i, 7, 100f, 40f, new Vector2(5f, 25f)),
+                        Localize(name)
                     );
                 }
 
@@ -435,11 +439,11 @@ namespace Benchwarp
                 }
 
                 CanvasText sceneNameText = sceneNamePanel.GetText("SceneName");
-                
+
                 if (gs.MaxSceneNames > 1)
                 {
                     int nLines = 1;
-                
+
                     for (int i = 1; i < Math.Min(USceneManager.sceneCount, gs.MaxSceneNames); i++)
                     {
                         sceneText += $"\n{Events.GetSceneName(USceneManager.GetSceneAt(i).name)}";
@@ -451,7 +455,7 @@ namespace Benchwarp
                         sceneText += $"\n(+ {USceneManager.sceneCount - gs.MaxSceneNames} more)";
                         nLines++;
                     }
-                    
+
                     sceneNameText.SetPosition(new Vector2(5f, 1080f - 20 * nLines));
                 }
 
@@ -486,7 +490,7 @@ namespace Benchwarp
 
                 if (onCooldown)
                 {
-                    deploy.UpdateText(((int) cooldown).ToString());
+                    deploy.UpdateText(((int)cooldown).ToString());
                 }
 
                 if (cooldown <= 0 && onCooldown)
@@ -531,7 +535,7 @@ namespace Benchwarp
                 {
                     foreach ((string name, FieldInfo fi) in Panels["Options"].Select(x => (x.Item1, x.Item3)))
                     {
-                        options.GetButton(name).SetTextColor((bool) fi.GetValue(gs) ? Color.yellow : Color.white);
+                        options.GetButton(name).SetTextColor((bool)fi.GetValue(gs) ? Color.yellow : Color.white);
                     }
                 }
             }
@@ -542,7 +546,7 @@ namespace Benchwarp
             {
                 foreach ((string name, FieldInfo fi) in Panels["Settings"].Select(x => (x.Item1, x.Item3)))
                 {
-                    settings.GetButton(name).SetTextColor((bool) fi.GetValue(gs) ? Color.yellow : Color.white);
+                    settings.GetButton(name).SetTextColor((bool)fi.GetValue(gs) ? Color.yellow : Color.white);
                 }
             }
 
