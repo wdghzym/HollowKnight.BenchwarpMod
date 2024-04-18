@@ -1,5 +1,8 @@
 # HollowKnight.BenchwarpMod
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/wdghzym/HollowKnight.BenchwarpMod)
+![Downloads GitHub all releases](https://img.shields.io/github/downloads/wdghzym/HollowKnight.BenchwarpMod/total)
+
 Mod which creates a clickable menu on the pause screen to alter your current bench respawn point. Use warp button (or save and quit) after selection to travel to new bench. By default, only benches visited after installing the mod can be destinations.
 
 Benchwarp fixes a bug where a the player can softlock by interacting with a bench before an area title popup occurs. As a side-effect, benches are interactable during the area title popup with Benchwarp.
