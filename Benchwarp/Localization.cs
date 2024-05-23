@@ -59,4 +59,12 @@ public static class Localization
 
         return _map is not null && _map.TryGetValue(text, out string newText) ? newText : text;
     }
+    public static string subname(this string text)
+    {
+        int idx = text.IndexOf(':');
+        if (idx < 0) return text;
+        return text.Substring(idx + 1);
+        
+
+    }
 }

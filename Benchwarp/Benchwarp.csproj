@@ -10,7 +10,7 @@
     <VersionSuffix></VersionSuffix>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>true</ImplicitUsings>
-    <HollowKnightRefs>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed</HollowKnightRefs>
+    <HollowKnightRefs>D:\GitHub\HollowKnight.BenchwarpMod-3.2.6.0\Benchwarp\lib</HollowKnightRefs>
   </PropertyGroup>
 
   <Import Project="LocalOverrides.targets" Condition="Exists('LocalOverrides.targets')" />

@@ -127,7 +127,7 @@ namespace Benchwarp
                     pos,
                     Vector2.zero,
                     action,
-                    new Rect(0f, 0f, 80f, 40f),
+                    new Rect(0f, 0f, 96f, 40f),
                     f != null ? f : GUIController.Instance.TrajanNormal,
                     displayName ?? name,
                     fontSize
@@ -262,7 +262,7 @@ namespace Benchwarp
             {
                 CanvasPanel door3 = MakePanel("Doors", new Vector2(-5f, 20f));
                 CanvasPanel door2 = MakePanel("Rooms", new Vector2(395f, 20f));
-                CanvasPanel door1 = MakePanel("Areas", new Vector2(1045f, 20f));
+                CanvasPanel door1 = MakePanel("Areas", new Vector2(945f, 20f));
                 // List<string> doorAreas = DoorWarp.Doors.Select(d => d.area).Distinct().ToList();
                 string[] doorAreas = DoorWarp.Areas;
                 for (int i = 0; i < doorAreas.Length; i++)
@@ -303,9 +303,9 @@ namespace Benchwarp
                                     }
                                     if (!door3.active) door3.ToggleActive();
                                 },
-                                GridPosition(j, 6, 100f, 40f, new Vector2(5f, 25f)),
-                                displayName: Localize(Events.GetSceneName(rooms[j]))
-                            );
+                                GridPosition(j, 5, 110f, 40f, new Vector2(5f, 25f)),
+                                displayName: Localize(Events.GetSceneName(rooms[j])).subname()
+                            ); ;
                         }
                     };
 
@@ -314,7 +314,7 @@ namespace Benchwarp
                         door1,
                         name,
                         action,
-                        GridPosition(i, 7, 100f, 40f, new Vector2(5f, 25f)),
+                        GridPosition(i, 5, 100f, 40f, new Vector2(5f, 25f)),
                         Localize(name)
                     );
                 }
